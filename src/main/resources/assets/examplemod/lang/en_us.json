@@ -1,6 +1,10 @@
 {
-  "commands.money.coin.get.success": "Your current balance is $%1$s.",
-  "commands.money.coin.set.success": "Your balance has been updated to $%1$s.",
-  "commands.money.coin.plus.success": "Funds added. Your new balance is $%1$s.",
-  "commands.money.coin.minus.success": "Funds deducted. Your remaining balance is $%1$s."
+  "commands.money.coin.get.success": "Your current balance is ￥%1$s.",
+  "commands.money.coin.set.success": "Your balance has been updated to ￥%1$s.",
+  "commands.money.coin.plus.success": "Funds added. Your new balance is ￥%1$s.",
+  "commands.money.coin.minus.success": "Funds deducted. Your remaining balance is ￥%1$s.",
+  "commands.money.gem.get.success": "Your current balance is $%1$s.",
+  "commands.money.gem.set.success": "Your balance has been updated to $%1$s.",
+  "commands.money.gem.plus.success": "Funds added. Your new balance is $%1$s.",
+  "commands.money.gem.minus.success": "Funds deducted. Your remaining balance is $%1$s."
 }

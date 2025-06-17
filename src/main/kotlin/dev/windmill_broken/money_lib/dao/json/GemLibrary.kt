@@ -22,7 +22,10 @@ object GemLibrary: ConcurrentHashMap<UUID, Long>(), GemDAOWharf, DAO.JsonDAO {
         load()
     }
 
-    override fun select(player: Player): Long = get(player.uuid)?:0
+    override fun select(player: Player): Long{
+        if (this[player.uuid] == null){this[player.uuid] = 0L}
+        return get(player.uuid)!!
+    }
 
     override fun update(player: Player, amount: Long){
         put(player.uuid, amount)
@@ -34,7 +37,7 @@ object GemLibrary: ConcurrentHashMap<UUID, Long>(), GemDAOWharf, DAO.JsonDAO {
     }
 
     override fun save() {
-        val path = JsonUtils.rootFolder.resolve("money.json")
+        val path = JsonUtils.rootFolder.resolve("gem.json")
         val json = JsonUtils.jsonConfig.encodeToString(
             MapSerializer(
                 UUIDSerializer,
@@ -57,7 +60,7 @@ object GemLibrary: ConcurrentHashMap<UUID, Long>(), GemDAOWharf, DAO.JsonDAO {
     }
 
     override fun load() {
-        val path = JsonUtils.rootFolder.resolve("money.json")
+        val path = JsonUtils.rootFolder.resolve("gem.json")
         try {
             val jsonStr = Files.readString(path, StandardCharsets.UTF_8)
             val map = JsonUtils.jsonConfig.decodeFromString(MapSerializer(

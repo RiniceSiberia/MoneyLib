@@ -60,7 +60,7 @@ object Config {
 
     @SubscribeEvent
     @JvmStatic
-    fun onLoad(event: ModConfigEvent?) {
+    fun onLoad(event: ModConfigEvent) {
         DB_PATH = dbPath.get()
         DB_DRIVER = dbDriver.get()
         DB_USERNAME = dbUsername.get()

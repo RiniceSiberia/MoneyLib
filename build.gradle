@@ -157,14 +157,6 @@ dependencies {
             prefer(exposedVersion)
         }
     }
-    additionalRuntimeClasspath(implementation(exposedPath+"crypt:"+exposedVersion))
-    jarJar(exposedPath+"crypt:"+exposedVersion) {
-        transitive = false
-        version {
-            strictly(exposedRange)
-            prefer(exposedVersion)
-        }
-    }
     additionalRuntimeClasspath(implementation(exposedPath+"dao:"+exposedVersion))
     jarJar(exposedPath+"dao:"+exposedVersion) {
         transitive = false
@@ -182,15 +174,6 @@ dependencies {
         }
     }
 
-    additionalRuntimeClasspath(implementation(exposedPath+"kotlin-datetime:"+exposedVersion))
-    jarJar(exposedPath+"kotlin-datetime:"+exposedVersion) {
-        transitive = false
-        version {
-            strictly(exposedRange)
-            prefer(exposedVersion)
-        }
-    }
-
     additionalRuntimeClasspath(implementation(exposedPath+"json:"+exposedVersion))
     jarJar(exposedPath+"json:"+exposedVersion) {
         transitive = false
@@ -200,23 +183,16 @@ dependencies {
         }
     }
 
-    additionalRuntimeClasspath(implementation(exposedPath+"money:"+exposedVersion))
-    jarJar(exposedPath+"money:"+exposedVersion) {
-        transitive = false
-        version {
-            strictly(exposedRange)
-            prefer(exposedVersion)
-        }
-    }
 
-    additionalRuntimeClasspath(implementation(exposedPath+"migration:"+exposedVersion))
-    jarJar(exposedPath+"migration:"+exposedVersion) {
-        transitive = false
-        version {
-            strictly(exposedRange)
-            prefer(exposedVersion)
-        }
-    }
+//    additionalRuntimeClasspath(implementation("com.zaxxer:HikariCP:6.3.0"))
+//    jarJar("com.zaxxer:HikariCP:6.3.0") {
+//        transitive = false
+//        version {
+//            strictly("[6.3.0,)")
+//            prefer("6.3.0")
+//        }
+//    }
+
 
     implementation("thedarkcolour:kfflang-neoforge:5.8.0")
     implementation("thedarkcolour:kfflib-neoforge:5.8.0")

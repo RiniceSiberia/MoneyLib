@@ -1,7 +1,7 @@
 package dev.windmill_broken.money_lib.dao.json
 
 import dev.windmill_broken.money_lib.Config
-import dev.windmill_broken.money_lib.MoneyLib
+import dev.windmill_broken.money_lib.MoneyLib.Companion.LOGGER
 import dev.windmill_broken.money_lib.utils.LateInitObjects
 import kotlinx.serialization.json.Json
 import net.minecraft.world.level.storage.LevelResource
@@ -24,13 +24,15 @@ object JsonUtils {
             return myGlobalJsonDir
         }
 
-    val worldRootFolder: Path
+    val serverRootFolder: Path
         get() = LateInitObjects.SERVER.getWorldPath(LevelResource.ROOT).toAbsolutePath()
 
     val rootFolder : Path
         get() = if (Config.ENABLE_JSON_MODEL_GLOBAL_MONEY){
             globalRootFolder
         }else{
-            worldRootFolder
+            serverRootFolder
+        }.also {
+            LOGGER.info(it.toUri().path)
         }
 }

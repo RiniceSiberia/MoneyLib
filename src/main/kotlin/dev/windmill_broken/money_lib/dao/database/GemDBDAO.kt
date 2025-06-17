@@ -1,6 +1,5 @@
 package dev.windmill_broken.money_lib.dao.database
 
-import MigrationUtils
 import dev.windmill_broken.money_lib.dao.DAO
 import dev.windmill_broken.money_lib.dao.GemDAOWharf
 import dev.windmill_broken.money_lib.dao.database.dto.PlayerGemDBEntity
@@ -14,7 +13,7 @@ object GemDBDAO : GemDAOWharf, DAO.DBDAO{
 
     init {
         if (CoinDBDAO.valid){
-            transaction {
+            transaction(db = DatabaseUtils.DATABASE) {
                 MigrationUtils.statementsRequiredForDatabaseMigration(PlayerGemDBTable)
             }
         }

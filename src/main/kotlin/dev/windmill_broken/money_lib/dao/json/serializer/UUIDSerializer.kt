@@ -15,18 +15,13 @@ import java.util.UUID
  * @Message: UUID类的序列化器
  **/
 object UUIDSerializer : KSerializer<UUID> {
-    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("uuid", PrimitiveKind.STRING)
+    override val descriptor = PrimitiveSerialDescriptor("uuid", PrimitiveKind.STRING)
 
     override fun serialize(encoder: Encoder, value: UUID) {
-        val composite = encoder.beginStructure(descriptor)
-        composite.encodeStringElement(descriptor,0,value.toString())
-        composite.endStructure(descriptor)
+        encoder.encodeString(value.toString())
     }
 
     override fun deserialize(decoder: Decoder): UUID {
-        val composite = decoder.beginStructure(descriptor)
-        val uuid : String = composite.decodeStringElement(descriptor,0)
-        composite.endStructure(descriptor)
-        return UUID.fromString(uuid)
+        return UUID.fromString(decoder.decodeString())
     }
 }

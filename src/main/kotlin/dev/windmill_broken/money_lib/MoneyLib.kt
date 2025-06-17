@@ -7,6 +7,7 @@ import net.neoforged.bus.api.IEventBus
 import net.neoforged.fml.ModContainer
 import net.neoforged.fml.common.Mod
 import net.neoforged.neoforge.common.NeoForge
+import org.jetbrains.exposed.sql.Op
 import org.slf4j.Logger
 
 @Mod(MoneyLib.MOD_ID)
@@ -17,6 +18,8 @@ class MoneyLib(modEventBus: IEventBus, modContainer: ModContainer) {
         with(NeoForge.EVENT_BUS){
             addListener(LateInitObjects::onServerStarting)
             addListener(CommandRegister::register)
+            addListener(OtherEvents::onServerTicket)
+            addListener(OtherEvents::onServerStopping)
         }
     }
 

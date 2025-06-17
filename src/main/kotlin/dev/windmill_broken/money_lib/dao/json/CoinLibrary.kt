@@ -22,7 +22,10 @@ object CoinLibrary: ConcurrentHashMap<UUID, Long>(), CoinDAOWharf, DAO.JsonDAO {
         load()
     }
 
-    override fun select(player: Player): Long = get(player.uuid)?:0
+    override fun select(player: Player): Long{
+        if (this[player.uuid] == null){this[player.uuid] = 0L}
+        return get(player.uuid)!!
+    }
 
     override fun update(player: Player, amount: Long){
         put(player.uuid, amount)
@@ -34,7 +37,7 @@ object CoinLibrary: ConcurrentHashMap<UUID, Long>(), CoinDAOWharf, DAO.JsonDAO {
     }
 
     override fun save() {
-        val path = JsonUtils.rootFolder.resolve("money.json")
+        val path = JsonUtils.rootFolder.resolve("coin.json")
         val json = JsonUtils.jsonConfig.encodeToString(
             MapSerializer(
                 UUIDSerializer,
@@ -57,7 +60,7 @@ object CoinLibrary: ConcurrentHashMap<UUID, Long>(), CoinDAOWharf, DAO.JsonDAO {
     }
 
     override fun load() {
-        val path = JsonUtils.rootFolder.resolve("money.json")
+        val path = JsonUtils.rootFolder.resolve("coin.json")
         try {
             val jsonStr = Files.readString(path, StandardCharsets.UTF_8)
             val map = JsonUtils.jsonConfig.decodeFromString(MapSerializer(
@@ -69,7 +72,6 @@ object CoinLibrary: ConcurrentHashMap<UUID, Long>(), CoinDAOWharf, DAO.JsonDAO {
         }catch (e : IOException){
             e.printStackTrace()
             LOGGER.error("coin library deserialization process error",e)
-            "{}"
         }
     }
 

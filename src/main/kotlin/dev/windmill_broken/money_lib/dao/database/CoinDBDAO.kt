@@ -1,6 +1,5 @@
 package dev.windmill_broken.money_lib.dao.database
 
-import MigrationUtils
 import dev.windmill_broken.money_lib.dao.CoinDAOWharf
 import dev.windmill_broken.money_lib.dao.DAO
 import dev.windmill_broken.money_lib.dao.database.dto.PlayerCoinDBEntity
@@ -13,7 +12,7 @@ object CoinDBDAO : CoinDAOWharf, DAO.DBDAO{
 
     init {
         if (valid){
-            transaction {
+            transaction(db = DatabaseUtils.DATABASE) {
                 MigrationUtils.statementsRequiredForDatabaseMigration(PlayerCoinDBTable)
             }
         }

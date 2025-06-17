@@ -9,7 +9,7 @@ sealed interface DAO {
 
     interface DBDAO : DAO{
         override val valid: Boolean
-            get() = DatabaseUtils.DATABASE != null
+            get() = DatabaseUtils.DATABASE_VALID
     }
 
     interface JsonDAO : DAO{
