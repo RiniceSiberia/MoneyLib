@@ -1,0 +1,6 @@
+{
+  "commands.money.coin.get.success": "你当前的余额为 $%1$s。",
+  "commands.money.coin.set.success": "你的余额已更新为 $%1$s。",
+  "commands.money.coin.plus.success": "已增加资金，当前余额为 $%1$s。",
+  "commands.money.coin.minus.success": "已扣除资金，当前余额为 $%1$s。"
+}
