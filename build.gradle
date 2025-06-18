@@ -135,8 +135,8 @@ configurations {
 
 dependencies {
 
-    additionalRuntimeClasspath(implementation("mysql:mysql-connector-java:[8.0,)"))
-    jarJar("mysql:mysql-connector-java:[8.0,)") {
+    additionalRuntimeClasspath(implementation("mysql:mysql-connector-java:8.0.33"))
+    jarJar("mysql:mysql-connector-java:8.0.33") {
         version {
             strictly("[8.0,)")
             prefer("8.0.33")

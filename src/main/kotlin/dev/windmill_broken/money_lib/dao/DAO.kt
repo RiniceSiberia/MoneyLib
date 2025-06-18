@@ -2,7 +2,7 @@ package dev.windmill_broken.money_lib.dao
 
 import dev.windmill_broken.money_lib.dao.database.DatabaseUtils
 
-sealed interface DAO {
+interface DAO {
 
     val valid : Boolean
         get() = true
